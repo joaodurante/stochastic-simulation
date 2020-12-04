@@ -1,0 +1,10 @@
+Valor inicial = 15
+15 -> (15)² = 0225
+22 -> (22)² = 0484
+48 -> (48)² = 2304
+30 -> (30)² = 0900
+90 -> (90)² = 8100
+10 -> (10)² = 0100
+10
+
+O ciclo é muito curto, convergiu muito rapidamente
