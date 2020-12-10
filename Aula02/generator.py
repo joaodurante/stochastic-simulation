@@ -46,6 +46,15 @@ def correlation_coefficient(x, y):
 
     return numerator / denominator
 
+def chi_squared(x, y):
+    summation = 0
+
+    for xi, yi in zip(x, y):
+        res = ((xi - yi) ** 2) / yi
+        summation += res
+
+    return summation
+
 
 if __name__ == "__main__":
     a = 16807
@@ -54,15 +63,17 @@ if __name__ == "__main__":
     init = int(input('Insira o valor inicial: '))
     n = int(input('Insira o valor de n: '))
 
-    res = generate(a, m, n, init, c)
+    x = generate(a, m, n, init, c)
     y = generate(a, m, n, init+1, c)
     
-    avg = average(res)
-    std = std_deviation(res, avg)
-    corr = correlation_coefficient(res, y)
+    avg = average(x)
+    std = std_deviation(x, avg)
+    corr = correlation_coefficient(x, y)
+    chi = chi_squared(x, y)
 
-    print(res)
+    print(x)
     print(avg)
     print(std)
     print(corr)
+    print(chi)
 
