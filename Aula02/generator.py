@@ -21,15 +21,6 @@ def std_deviation(nums, avg):
     summation = sum([(x - avg) ** 2 for x in nums])
     return math.sqrt(summation) / (len(nums) - 1)
 
-# def std_deviation(nums):
-#     first = 1 / (len(nums) - 1)
-#     sec = sum([x ** 2 for x in nums])
-#     third = (sum(nums) ** 2) / len(nums)
-#     prod = first * (sec - third)
-
-#     if prod >= 0:
-#         return math.sqrt(prod)
-
 def correlation_coefficient(x, y):
     n = len(x)
     summation_xy = sum([xi * yi for xi, yi in zip(x, y)])
@@ -39,19 +30,24 @@ def correlation_coefficient(x, y):
     summation_yy = sum([yi ** 2 for yi in y])
 
     numerator = (n * summation_xy) - (summation_x * summation_y)
-    denominator = math.sqrt(
-        (n * summation_xx) - \
-        ((summation_x ** 2) * math.sqrt((n * summation_yy) - (summation_y ** 2)))
+
+    first_denominator = math.sqrt(
+        (n * summation_xx) - (summation_x ** 2)
     )
 
-    return numerator / denominator
+    second_denominator = math.sqrt(
+        (n * summation_yy) - (summation_y ** 2)
+    )
+
+    return numerator / (first_denominator * second_denominator)
 
 def chi_squared(x, y):
     summation = 0
 
     for xi, yi in zip(x, y):
-        res = ((xi - yi) ** 2) / yi
-        summation += res
+        if yi != 0:
+            res = ((xi - yi) ** 2) / yi
+            summation += res
 
     return summation
 
