@@ -67,9 +67,9 @@ if __name__ == "__main__":
     corr = correlation_coefficient(x, y)
     chi = chi_squared(x, y)
 
-    print(x)
-    print(avg)
-    print(std)
-    print(corr)
-    print(chi)
+    # print(x)
+    # print(avg)
+    # print(std)
+    # print(corr)
+    # print(chi)
 

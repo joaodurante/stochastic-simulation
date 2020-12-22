@@ -1,0 +1,8 @@
+Escolhe um a, um c e um m
+
+Usando:
+a = 4
+c = 1
+m = 9
+valor inicial = 2
+n = 2000

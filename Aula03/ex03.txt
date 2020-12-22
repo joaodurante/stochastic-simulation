@@ -1,0 +1,3 @@
+- C: Usa o método da congruência linear
+- Java: Usa o método da congruência linear
+- Python: Usa o gerador de números flutuantes Mersenne Twister

@@ -1,0 +1,23 @@
+*** EXERCICIO 1 ***
+Insira o valor inicial: 3
+Insira o valor de n: 1000 
+
+1-
+Media: 0.5013490052552553, Desvio Padrão: 0.009136794544032436
+Coeficiente de correlacao: -0.009143623679776777
+Qui-quadrado: 1942.2747510783045
+
+2-
+Media: 0.5013490052552553, Desvio Padrão: 0.009136794544032436
+Coeficiente de correlacao: -0.009143623679776777
+Qui-quadrado: 1942.2747510783045
+
+3-
+Media: 0.49358158158158183, Desvio Padrão: 0.009141857636774983
+Coeficiente de correlacao: -0.09991506196347427
+Qui-quadrado: 1101.6055529700313
+
+4-
+Media: 0.5056014648070922, Desvio Padrão: 0.009116031352006787
+Coeficiente de correlacao: 0.12749975737785518
+Qui-quadrado: 1268.7269481231062
