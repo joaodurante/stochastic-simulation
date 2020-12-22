@@ -6,3 +6,8 @@ c = 1
 m = 9
 valor inicial = 2
 n = 2000
+
+Resultados gerados:
+Media: 0.4444444444444444, Desvio Padrão: 0.009085818643109854
+Coeficiente de correlacao: -0.4999999999999985
+Qui-quadrado: 502.09880952380956
