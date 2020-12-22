@@ -25,11 +25,10 @@ if __name__ == "__main__":
     a = 16807
     c = 0
     m = 1024
-    init_x = 2
-    init_y = 3
+    init = 2
     n = int(input('Insira o valor de n: '))
 
-    x = generate(a, m, n, init_x, c)
-    y = generate(a, m, n, init_y, c)
+    x = generate(a, m, n, init, c)
+    y = generate(a, m, n, init+1, c)
 
     print(calc_pi(x, y))
