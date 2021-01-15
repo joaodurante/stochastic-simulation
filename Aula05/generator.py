@@ -15,42 +15,69 @@ def generate(a, m, n, init, c):
 
 
 def uniform_method(nums, a, b):
-    sequence = []
+    x = []
+    y = []
 
     for i in nums:
-        # temp = (b - a) * i + a
-        temp = 1 - (b - a)
-        sequence.append(temp)
+        # x
+        temp = (b - a) * i + a
+        x.append(temp)
+        
+        # y
+        if a <= temp and temp <= b:
+            temp = 1 - (b - a)
+            y.append(temp)
+        else:
+            x.pop(-1)
 
-    return sequence
+    plt.plot(x, y)
+    plt.show()
 
-def exponential_method(nums, alpha, x):
-    sequence = []
+def exponential_method(nums, alpha):
+    x = []
+    y = []
 
     for i in nums:
-        # temp = -(numpy.log(i) / alpha)
-        temp = alpha * numpy.exp(- alpha * i)
-        sequence.append(temp)
+        # x
+        temp = -(numpy.log(i) / alpha)
+        x.append(temp)
+
+        # y
+        temp = alpha * numpy.exp(- alpha * temp)
+        y.append(temp)
     
-    return sequence
+    plt.plot(x, y)
+    plt.show()
 
 def weibull_method(nums, alpha, beta):
-    sequence = []
+    x = []
+    y = []
 
     for i in nums:
-        temp = alpha * (beta ** -alpha) * (i ** (alpha - 1)) * (numpy.exp(-(i / beta) ** alpha))
-        sequence.append(temp)
+        # temp = beta * (-(numpy.log(i) ** (1 / alpha)))
+        # x.append(temp)
 
-    return sequence
+        temp = alpha * (beta ** -alpha) * (i ** (alpha - 1)) * (numpy.exp(-(i / beta) ** alpha))
+        y.append(temp)
+
+    plt.plot(nums, y)
+    plt.show()
 
 def erlang_method(nums, alpha, k):
-    sequence = []
+    x = []
+    y = []
 
-    for i in nums:
-        temp = (alpha * (numpy.exp(-alpha * i)) * (alpha * i) ** (k - 1)) / math.factorial(k - 1)
-        sequence.append(temp)
+    for index, i in enumerate(nums):
+        # x    
+        temp = (- numpy.log(i)) / alpha
+        x.append(temp)
 
-    return sequence
+        # y
+        temp = (alpha * (numpy.exp(-alpha * temp)) * (alpha * temp) ** (k - 1)) / math.factorial(k - 1)
+        y.append(temp)
+
+    plt.plot(x,y)
+    plt.show()
 
 
 if __name__ == "__main__":
@@ -62,19 +89,8 @@ if __name__ == "__main__":
 
     x = generate(a, m, n, init, c)
     
-    uniform = uniform_method(x, 5, 10)
-    plt.plot(uniform)
-    plt.show()
-
-    exponential = exponential_method(x, 5, 2)
-    plt.plot(exponential)
-    plt.show()
-
-    weibull = weibull_method(x, 2, 1)
-    plt.plot(weibull)
-    plt.show()
-
-    erlang = erlang_method(x, 2, 3)
-    plt.plot(erlang)
-    plt.show()
+    uniform_method(x, 5, 10)
+    exponential_method(x, 2)
+    weibull_method(x, 1, 0.5)
+    erlang_method(x, 3, 1)
 
