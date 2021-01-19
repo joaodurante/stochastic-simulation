@@ -63,11 +63,11 @@ def weibull_method(nums, alpha, beta):
     plt.plot(nums, y)
     plt.show()
 
-def erlang_method(nums, alpha, k):
+def erlang_method(nums, k, alpha):
     x = []
     y = []
 
-    for index, i in enumerate(nums):
+    for i in nums:
         # x    
         temp = (- numpy.log(i)) / alpha
         x.append(temp)
