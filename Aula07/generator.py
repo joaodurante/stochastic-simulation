@@ -10,36 +10,45 @@ def generate(a, m, n, init, c):
         result.append(item / m)
         init = item
 
-    return result[0]
+    result.pop(0)
+    return result
 
 def drunk_simulator():
     t = 0
     x = 0
     y = 0
-    init = 2
+    i = 0
 
+    rand1 = generate(16807, pow(2, 31) - 1, 5000, 2, 0)
+    rand2 = generate(16807, pow(2, 31) - 1, 5000, 3, 0)
+    print(rand1)
+    print(rand2)
 
     while((x != 3 and y != 4) or t != 60):
-        rand1 = generate(16807, pow(2, 31) - 1, init, 1000, 0)
-        rand2 = generate(16807, pow(2, 31) - 1, init+2, 1000, 0)
+        if i == 4999:
+            rand1 = generate(16807, pow(2, 31) - 1, 5000, 2, 0)
+            rand2 = generate(16807, pow(2, 31) - 1, 5000, 3, 1)
+            i = 0
 
-        if rand1 <= 0.3:
+        if rand1[i] <= 0.3:
             t += 1
 
-        if rand2 <= 0.35:
+        if rand2[i] <= 0.35:
             x += 1
-        elif 0.35 < rand2 and rand2 <= 0.8:
+        elif 0.35 < rand2[i] and rand2[i] <= 0.8:
             y += 1
-        elif 0.8 < rand2 and rand2 <= 0.9:
-            x += 1
+        elif 0.8 < rand2[i] and rand2[i] <= 0.9:
+            x -= 1
         else:
             y -= 1
         
         t += 5
+        i += 1
 
-    print(x)
-    print(y)
-    print(t)
+        # print("---")
+        # print(x)
+        # print(y)
+        # print(t)
 
 if __name__ == "__main__":
     drunk_simulator()
