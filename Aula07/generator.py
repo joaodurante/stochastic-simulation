@@ -14,21 +14,31 @@ def generate(a, m, n, init, c):
     return result
 
 def drunk_simulator():
-    a = 2000
-    m = pow(2, 12) - 1
-    n = 10000
-    init = 1
-    c = 2
+    # constants 
+    TIME_TARGET = 360
 
+    # generator values
+    a = 16807
+    m = pow(2, 31) - 1
+    n = 100000
+    init = 2
+    c = 0
+
+    # temp values
     t = 0
     x = 0
     y = 0
     i = 0
 
+    # random values
     rand1 = generate(a, m, n, init, c)
     rand2 = generate(a, m, n, init+1, c)
 
-    while((x != 3 or y != 4) and t <= 360):
+    # final values
+    result = []
+    filtered_result = []
+
+    while(i < len(rand1)):
         if rand1[i] <= 0.3:
             t += 1
 
@@ -44,9 +54,24 @@ def drunk_simulator():
         t += 5
         i += 1
 
-    print(x)
-    print(y)
-    print(t)
+        if((x == 3 and y == 4) or t >= TIME_TARGET):
+            result.append({'x': x, 'y': y, 't': t})
+            t = 0
+            x = 0
+            y = 0
+
+    # filter unique time values
+    for i in result:
+        if i['x'] == 3 and i['y'] == 4 and i['t'] <= TIME_TARGET and i not in filtered_result:
+            filtered_result.append(i)
+
+    # print final results
+    print([i['t'] for i in filtered_result])
+    print(len(filtered_result))
+    print(len(result))
+    
 
 if __name__ == "__main__":
     drunk_simulator()
+    plt.plot([0.24, 1.35, 2.56, 3.78])
+    plt.show()
