@@ -15,7 +15,7 @@ def generate(a, m, n, init, c):
 
 def drunk_simulator():
     # constants 
-    TIME_TARGET = 360
+    TIME_TARGET = 60
 
     # generator values
     a = 16807
@@ -73,5 +73,3 @@ def drunk_simulator():
 
 if __name__ == "__main__":
     drunk_simulator()
-    plt.plot([0.24, 1.35, 2.56, 3.78])
-    plt.show()
