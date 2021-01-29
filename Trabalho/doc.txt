@@ -1,0 +1,22 @@
+sistema que voce consegue estudar, onde e possivel estudar variaveis aleatorias e deterministicas (nao aleatorias), iss é um processo estocastico, uma fila é um, pois há duas variaveis, o tempo entre as chegadas (aleatoria geralmente, mas pode ser deterministico caso seja tempos "fixos"), 
+
+
+SEMPRE 5 intervalos (Classes), intervalos iguais;
+-ln(random(i)) * 15, usa essa formula para gerar os TECs
+
+
+Tempo de chegada no relogio (do tempo que abriu o banco) TEC = Tempo de chegada no relogio do anterior + TEC atual
+Tempo = tempo na fila + tempo para ser atendido
+Tempo fim de serviço = Tempo inicio serviço + TS
+Tempo no sistema = Tempo na fila + TS
+
+
+2º cliente
+Gera o TEC, gera o TS, joga na tabela
+Tempo de chegada no relogio = Tec(2) + Tec(1)
+
+Sempre ter em mente que há um periodo que o banco fica aberto
+
+
+
+
