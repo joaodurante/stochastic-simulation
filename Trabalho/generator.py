@@ -21,7 +21,7 @@ def bank_queue(nums):
         last_row = rows[len(rows) - 1] if len(rows) > 0 else None
         row = BankRow(i, last_row)
         rows.append(row)
-        print(vars(row))
+        row.print_properties()
 
     return rows
     
