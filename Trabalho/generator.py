@@ -1,11 +1,14 @@
 import math
 import numpy
 from BankRow import BankRow
+from Replica import Replica
 import matplotlib.pyplot as plt
+from random import seed, randint
 
 # constants
 OPENING_TIME = 0
 CLOSING_TIME = 30
+seed(1)
 
 def generate(a, m, n, init, c):
     result = []
@@ -38,12 +41,27 @@ def bank_queue(nums):
 
     return rows
     
+def generate_seed(seeds):
+    seed = randint(0, 500)
+
+    while seed in seeds:
+        seed = randint(0, 500)
+
+    seeds.append(seed)
+    return seed
 
 if __name__ == "__main__":
     a = 16807
     c = 0
     m = pow(2, 31) - 1
-    init = 2
     n = 1000
-    result = generate(a, m, n, init, c)
-    rows = bank_queue(result)
+    used_seeds = []
+    replicas = []
+
+    for i in range(0, 120):
+        seed = generate_seed(used_seeds)
+        result = generate(a, m, n, seed, c)
+        rows = bank_queue(result)
+        replicas.append(Replica(rows))
+
+    
