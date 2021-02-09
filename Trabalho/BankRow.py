@@ -11,6 +11,7 @@ class BankRow:
         self.queue_time = self.get_queue_time()
         self.system_time = self.get_system_time()
         self.free_time = self.get_free_time()
+        self.service_time = self.get_service_time()
 
     def get_tec(self, num):
         return (-numpy.log(num) * 15)
@@ -50,6 +51,9 @@ class BankRow:
             return max(0, diff)
         else:
             return self.arrival_time
+    
+    def get_service_time(self):
+        return self.end_time - self.start_time
 
     def print_properties(self):
         print('TEC: {}, TS: {}, ARRIVAL_TIME: {}, START_TIME: {}, END_TIME: {}, QUEUE_TIME: {}, SYSTEM_TIME: {}, FREE_TIME: {}'

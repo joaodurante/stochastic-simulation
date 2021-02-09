@@ -19,12 +19,12 @@ class Replica:
 
 
     def calculate_avg(self, property):
-        nums = [i[property] for i in self.rows]
+        nums = [getattr(i, property) for i in self.rows]
 
         return sum(nums) / len(nums)
 
     def calculate_std_dev(self, property, avg):
-        nums = [i[property] for i in self.rows]
+        nums = [getattr(i, property) for i in self.rows]
 
         summation = sum([(x - avg) ** 2 for x in nums])
         return math.sqrt(summation) / (len(nums) - 1)
