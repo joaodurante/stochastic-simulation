@@ -10,6 +10,7 @@ OPENING_TIME = 0
 CLOSING_TIME = 30
 seed(1)
 
+# generate pseudo random numbers
 def generate(a, m, n, init, c):
     result = []
     
@@ -21,12 +22,14 @@ def generate(a, m, n, init, c):
     result.pop(0)
     return result
 
+# check if the arrival_time is inside of opening hours
 def is_the_bank_open(arrival_time):
     if arrival_time >= OPENING_TIME and arrival_time <= CLOSING_TIME:
         return True
     else:
         return False
 
+# generate bank queue
 def bank_queue(nums):
     rows = []
 
@@ -40,7 +43,8 @@ def bank_queue(nums):
             row.print_properties()
 
     return rows
-    
+
+# generate seeds
 def generate_seed(seeds):
     seed = randint(0, 500)
 
@@ -50,6 +54,7 @@ def generate_seed(seeds):
     seeds.append(seed)
     return seed
 
+# calculate average of averages
 def calculate_avg_of_avgs(replicas):
     avgs = {}
     queue_sum = system_sum = service_sum = 0
@@ -66,6 +71,7 @@ def calculate_avg_of_avgs(replicas):
 
     return avgs
 
+# calculate standard deviation of avgs
 def calculate_std_dev_of_avgs(replicas, queue_avg, system_avg, service_avg):
     std_devs = {}
     queue_summation = system_summation = service_summation = 0
@@ -82,6 +88,14 @@ def calculate_std_dev_of_avgs(replicas, queue_avg, system_avg, service_avg):
 
     return std_devs
 
+# calculate confidence interval
+def calculate_confidence_interval(avg, std_dev, t, alpha, n):
+    lower_limit = avg - t * (std_dev / math.sqrt(n))
+    upper_limit = avg + t * (std_dev / math.sqrt(n))
+
+    return lower_limit, upper_limit
+
+# main
 if __name__ == "__main__":
     a = 16807
     c = 0
