@@ -8,6 +8,9 @@ from random import seed, randint
 # CONSTANTS
 OPENING_TIME = 0
 CLOSING_TIME = 30
+NUMBER_OF_SEEDS = 121
+ALPHA = 0.05
+STUDENT_T = 1.96
 seed(1)
 
 # generate pseudo random numbers
@@ -29,7 +32,7 @@ def is_the_bank_open(arrival_time):
     else:
         return False
 
-# generate bank queue
+# generate bank system
 def bank_queue(nums):
     rows = []
 
@@ -103,19 +106,47 @@ if __name__ == "__main__":
     n = 1000
     used_seeds = []
     replicas = []
+    conf_interval = {}
 
-    for i in range(0, 120):
+    for i in range(1, NUMBER_OF_SEEDS):
         seed = generate_seed(used_seeds)
         result = generate(a, m, n, seed, c)
         rows = bank_queue(result)
         replicas.append(Replica(rows))
 
     avgs = calculate_avg_of_avgs(replicas)
-    print(avgs)
-    print(calculate_std_dev_of_avgs(
+    
+    std_devs = calculate_std_dev_of_avgs(
         replicas,
         avgs['queue'],
         avgs['system'],
         avgs['service']
-    ))
-    
+    )
+
+    conf_interval['queue'] = calculate_confidence_interval(
+        avgs['queue'],
+        std_devs['queue'],
+        STUDENT_T,
+        ALPHA,
+        NUMBER_OF_SEEDS
+    )
+
+    conf_interval['system'] = calculate_confidence_interval(
+        avgs['system'],
+        std_devs['system'],
+        STUDENT_T,
+        ALPHA,
+        NUMBER_OF_SEEDS
+    )
+
+    conf_interval['service'] = calculate_confidence_interval(
+        avgs['service'],
+        std_devs['service'],
+        STUDENT_T,
+        ALPHA,
+        NUMBER_OF_SEEDS
+    )
+
+    print(avgs)
+    print(std_devs)
+    print(conf_interval)
