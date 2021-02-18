@@ -14,18 +14,6 @@ ALPHA = 0.05
 STUDENT_T = 1.96
 seed(1)
 
-# generate pseudo random numbers
-def generate(a, m, n, init, c):
-    result = []
-    
-    for _ in range(0, n):
-        item = (a * init + c) % m
-        result.append(item / m)
-        init = item
-
-    result.pop(0)
-    return result
-
 # check if the arrival_time is inside of opening hours
 def is_the_bank_open(arrival_time):
     if arrival_time >= OPENING_TIME and arrival_time <= CLOSING_TIME:
@@ -70,7 +58,7 @@ if __name__ == "__main__":
 
     for i in range(1, NUMBER_OF_SEEDS):
         seed = generate_seed(used_seeds)
-        result = generate(a, m, n, seed, c)
+        result = Utils.generate(a, m, n, seed, c)
         rows = bank_queue(result)
         replicas.append(Replica(rows))
 

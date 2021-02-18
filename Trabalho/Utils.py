@@ -2,6 +2,28 @@ import math
 
 class Utils:
     @staticmethod
+    def generate(a, m, n, init, c):
+        """
+            Generates pseudo random numbers
+
+            Parameters:
+                a: integer number between 1 and m
+                m: prime number
+                n: number of iterations
+                init: initial value
+                c: increment ( c=0 -> congruential method, c != 0 -> mixed congruential method)
+        """
+        result = []
+        
+        for _ in range(0, n):
+            item = (a * init + c) % m
+            result.append(item / m)
+            init = item
+
+        result.pop(0)
+        return result
+
+    @staticmethod
     def calculate_avg_of_avgs(replicas):
         """
             Calculate average of averages
