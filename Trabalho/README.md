@@ -38,15 +38,8 @@ Usar no minimo 121 sementes diferentes, 1.96 caso use 121 sementes (isso é tabe
 3. Introdução teórica (O que é simulação? Por que simular um
 sistema? Aplicações das simulações, etc.)
 4. Metodologia
-    * Modelo conceitual: dados de entrada, distribuições de
-    probabilidade, hipóteses e detalhamento do sistema ou o que
-    foi assumido, medidas de desempenho, limitações de tempo
-    e recursos computacionais, fluxograma, validação do modelo
-    conceitual.
-    * Modelo computacional: Código fonte documentado – de modo
-    que outra pessoa possa entendê-lo. Especificar as etapas de
-    cada execução. Verificar a duração do período inicial instável.
-    Excluir o período instavel das medidas (regime transiente).
-5.Documentar os resultados – Apresentar os dados obtidos
+    * Modelo conceitual: dados de entrada, distribuições de probabilidade, hipóteses e detalhamento do sistema ou o que foi assumido, medidas de desempenho, limitações de tempo e recursos  computacionais, fluxograma, validação do modelo conceitual.
+    * Modelo computacional: Código fonte documentado – de modo que outra pessoa possa entendê-lo. Especificar as etapas de cada execução. Verificar a duração do período inicial instável. Excluir o período instavel das medidas (regime transiente).
+5. Documentar os resultados – Apresentar os dados obtidos
 através de tabelas, gráficos, etc. Apresentar uma breve
 discussão sobre os resultados obtidos. Apresentar o código fonte.
