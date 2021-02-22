@@ -1,9 +1,18 @@
 import numpy
 import math
+from constants import *
+from BankRow import BankRow
 
 class Replica:
-    def __init__(self, rows):
-        self.rows = rows
+    """
+        A replica of a bank queue report
+
+        Attributes:
+            pseudo_rand_list: list containing pseudo random numbers 
+    """
+    def __init__(self, pseudo_rand_list):
+
+        self.rows = self.generate_bank_queue(pseudo_rand_list)
 
         # QUEUE TIME
         self.queue_time_avg = self.calculate_avg('queue_time')
@@ -18,14 +27,72 @@ class Replica:
         self.service_time_std_dev = self.calculate_std_dev('service_time', self.service_time_avg)
 
 
-    def calculate_avg(self, property):
-        nums = [getattr(i, property) for i in self.rows]
+    def generate_bank_queue(self, nums):
+        """
+            Generates a bank queue
 
+            Parameters:
+                nums: list containing values that will be used to calculate BankRow
+
+            Returns:
+                list: list of generated BankRow
+        """
+
+        rows = []
+        for i in nums:
+            last_row = rows[len(rows) - 1] if len(rows) > 0 else None
+            row = BankRow(i, last_row)
+
+            # check if the arrival_time is inside interval
+            if self.is_the_bank_open(row.arrival_time):
+                rows.append(row)
+                row.print_properties()
+
+        return rows
+
+    def is_the_bank_open(self, arrival_time):
+        """
+            Check if the arrival_time is inside of opening hours
+
+            Parameters:
+                arrival_time: customer arrival time at bank
+
+            Returns:
+                bool: indicates if arrival time is inside bank opening hours
+        """
+
+        if arrival_time >= OPENING_TIME and arrival_time <= CLOSING_TIME:
+            return True
+        else:
+            return False
+
+    def calculate_avg(self, property):
+        """
+            Calculate average of property received
+
+            Parameters:
+                property: property name
+            
+            Returns:
+                float: average calculated
+        """
+
+        nums = [getattr(i, property) for i in self.rows]
         return sum(nums) / len(nums)
 
     def calculate_std_dev(self, property, avg):
-        nums = [getattr(i, property) for i in self.rows]
+        """
+            Calculate standard deviation of property received
 
+            Parameters:
+                property: property name
+                avg: average calculated
+            
+            Returns:
+                float: standard deviation calculated
+        """
+        
+        nums = [getattr(i, property) for i in self.rows]
         summation = sum([(x - avg) ** 2 for x in nums])
         return math.sqrt(summation) / (len(nums) - 1)
 

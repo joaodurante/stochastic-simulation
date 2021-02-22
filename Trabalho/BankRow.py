@@ -1,6 +1,13 @@
 import numpy
 
 class BankRow:
+    """
+        A single row of a bank report
+
+        Attributes:
+            random: the random value that will be used to calculate the properties
+            last_row: the last BankRow (if it's the first one it receive 'None')
+    """
     def __init__(self, random, last_row):
         self.last_row = last_row
         self.tec = self.get_tec(random)

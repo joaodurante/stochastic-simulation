@@ -1,6 +1,10 @@
 import math
+from random import seed, randint
 
 class Utils:
+    """
+        Class that contains useful methods
+    """
     @staticmethod
     def generate(a, m, n, init, c):
         """
@@ -85,3 +89,21 @@ class Utils:
         upper_limit = avg + t * (std_dev / math.sqrt(n))
 
         return lower_limit, upper_limit
+
+    @staticmethod
+    def generate_seed(seeds):
+        """
+            Generate a new random seed
+            Parameters:
+                seeds: array containing the used seeds
+            
+            Returns:
+                int: generated seed
+        """
+        seed = randint(0, 500)
+
+        while seed in seeds:
+            seed = randint(0, 500)
+
+        seeds.append(seed)
+        return seed
