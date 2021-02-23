@@ -111,6 +111,11 @@ class Utils:
 
     @staticmethod
     def show_charts(replicas):
+        """
+            Generates pyplot average charts
+            Parameters:
+                replicas: list of replicas
+        """
         queue_avgs = []
         system_avgs = []
         service_avgs = []
@@ -134,6 +139,12 @@ class Utils:
 
     @staticmethod
     def export_file(replicas):
+        """
+            Exports all rows of all replicas into a text file
+            Parameters:
+                replicas: list of replicas
+        """
+
         i = 0
 
         with open('data.txt', 'w') as f:
