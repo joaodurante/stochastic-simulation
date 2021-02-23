@@ -1,5 +1,6 @@
 import math
 from random import seed, randint
+import matplotlib.pyplot as plt
 
 class Utils:
     """
@@ -107,3 +108,26 @@ class Utils:
 
         seeds.append(seed)
         return seed
+
+    @staticmethod
+    def show_charts(replicas):
+        queue_avgs = []
+        system_avgs = []
+        service_avgs = []
+        
+        for i in replicas:
+            queue_avgs.append(i.queue_time_avg)
+            system_avgs.append(i.system_time_avg)
+            service_avgs.append(i.service_time_avg)
+
+        plt.title('QUEUE TIME AVERAGES CHART')
+        plt.plot(queue_avgs)
+        plt.show()
+
+        plt.title('SYSTEM TIME AVERAGES CHART')
+        plt.plot(system_avgs)
+        plt.show()
+
+        plt.title('SERVICE TIME AVERAGES CHART')
+        plt.plot(service_avgs)
+        plt.show()

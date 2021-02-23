@@ -16,15 +16,12 @@ class Replica:
 
         # QUEUE TIME
         self.queue_time_avg = self.calculate_avg('queue_time')
-        self.queue_time_std_dev = self.calculate_std_dev('queue_time', self.queue_time_avg)
 
         # SYSTEM TIME
         self.system_time_avg = self.calculate_avg('system_time')
-        self.system_time_std_dev = self.calculate_std_dev('system_time', self.system_time_avg)
 
         # SERVICE TIME
         self.service_time_avg = self.calculate_avg('service_time')
-        self.service_time_std_dev = self.calculate_std_dev('service_time', self.service_time_avg)
 
 
     def generate_bank_queue(self, nums):
@@ -79,20 +76,3 @@ class Replica:
 
         nums = [getattr(i, property) for i in self.rows]
         return sum(nums) / len(nums)
-
-    def calculate_std_dev(self, property, avg):
-        """
-            Calculate standard deviation of property received
-
-            Parameters:
-                property: property name
-                avg: average calculated
-            
-            Returns:
-                float: standard deviation calculated
-        """
-        
-        nums = [getattr(i, property) for i in self.rows]
-        summation = sum([(x - avg) ** 2 for x in nums])
-        return math.sqrt(summation) / (len(nums) - 1)
-

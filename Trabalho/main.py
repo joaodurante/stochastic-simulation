@@ -55,3 +55,4 @@ if __name__ == "__main__":
     print(std_devs)
     print('\n--- CONFIDENCE INTERVAL ---')
     print(conf_interval)
+    Utils.show_charts(replicas)
