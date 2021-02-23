@@ -62,7 +62,7 @@ class BankRow:
     def get_service_time(self):
         return self.end_time - self.start_time
 
-    def print_properties(self):
-        print('TEC: {}, TS: {}, ARRIVAL_TIME: {}, START_TIME: {}, END_TIME: {}, QUEUE_TIME: {}, SYSTEM_TIME: {}, FREE_TIME: {}'
-            .format(self.tec, self.ts, self.arrival_time, self.start_time, self.end_time, self.queue_time, self.system_time, self.free_time))
+    def to_string(self):
+        return 'TEC: {}, TS: {}, ARRIVAL_TIME: {}, START_TIME: {}, END_TIME: {}, QUEUE_TIME: {}, SYSTEM_TIME: {}, FREE_TIME: {}' \
+            .format(self.tec, self.ts, self.arrival_time, self.start_time, self.end_time, self.queue_time, self.system_time, self.free_time)
 

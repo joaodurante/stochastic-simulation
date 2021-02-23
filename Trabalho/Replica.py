@@ -43,7 +43,6 @@ class Replica:
             # check if the arrival_time is inside interval
             if self.is_the_bank_open(row.arrival_time):
                 rows.append(row)
-                row.print_properties()
 
         return rows
 

@@ -131,3 +131,18 @@ class Utils:
         plt.title('SERVICE TIME AVERAGES CHART')
         plt.plot(service_avgs)
         plt.show()
+
+    @staticmethod
+    def export_file(replicas):
+        i = 0
+
+        with open('data.txt', 'w') as f:
+            for replica in replicas:
+                f.write('--- REPLICA {} ---\n'.format(i))
+                for row in replica.rows:
+                    f.write(row.to_string() + '\n')
+                    
+                i += 1
+
+            f.close()
+                
