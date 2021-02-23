@@ -3,7 +3,7 @@
 A = 16807
 C = 0
 M = pow(2, 31) - 1
-N = 1000
+N = 10000
 
 OPENING_TIME = 0
 CLOSING_TIME = 30
